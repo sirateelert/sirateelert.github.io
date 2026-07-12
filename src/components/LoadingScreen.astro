@@ -1,0 +1,96 @@
+---
+import personal from "../data/personal.json";
+
+// Hardcoded configs to bypass the missing site.json file
+const enabled = true;
+const playOncePerSession = false; // Set to false so it runs every time you load/refresh
+
+const [firstName, lastName] = personal.fullName.split(" ");
+const firstInitial = firstName.charAt(0);
+const firstRest = firstName.slice(1);
+const lastInitial = lastName.charAt(0);
+const lastRest = lastName.slice(1);
+---
+{enabled && (
+  <div
+    id="sl-loader"
+    data-once={playOncePerSession ? "true" : "false"}
+    class="fixed inset-0 z-[100] flex items-center justify-center bg-paper dark:bg-midnight"
+    aria-hidden="true"
+  >
+    <div class="flex w-full flex-col items-center justify-center gap-2 px-6 text-center sm:flex-row sm:gap-4">
+      <span class="whitespace-nowrap font-display text-4xl font-extrabold tracking-tight text-ink sm:text-6xl md:text-7xl dark:text-cloud">
+        {firstInitial}<span id="sl-first-rest" class="sl-reveal">{firstRest}</span>
+      </span>
+      <span class="whitespace-nowrap font-display text-4xl font-extrabold tracking-tight text-ink sm:text-6xl md:text-7xl dark:text-cloud">
+        {lastInitial}<span id="sl-last-rest" class="sl-reveal">{lastRest}</span>
+      </span>
+    </div>
+  </div>
+)}
+
+<style>
+  #sl-loader {
+    transition: opacity 700ms ease, visibility 700ms ease;
+  }
+  #sl-loader.sl-loader-hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  .sl-reveal {
+    display: inline-block;
+    clip-path: inset(0 100% 0 0);
+    will-change: clip-path;
+    transition: clip-path 1400ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .sl-reveal.sl-visible {
+    clip-path: inset(0 0 0 0);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    #sl-loader,
+    .sl-reveal {
+      transition: none !important;
+    }
+  }
+</style>
+
+<script is:inline>
+  (function () {
+    var loader = document.getElementById("sl-loader");
+    if (!loader) return;
+
+    var playOnce = loader.dataset.once === "true";
+    var seen = sessionStorage.getItem("sl-loader-seen") === "true";
+    var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (playOnce && seen) {
+      loader.remove();
+      return;
+    }
+    if (reduced) {
+      loader.remove();
+      sessionStorage.setItem("sl-loader-seen", "true");
+      return;
+    }
+
+    var firstRest = document.getElementById("sl-first-rest");
+    var lastRest = document.getElementById("sl-last-rest");
+
+    setTimeout(function () {
+      firstRest.classList.add("sl-visible");
+      lastRest.classList.add("sl-visible");
+    }, 700);
+
+    setTimeout(function () {
+      loader.classList.add("sl-loader-hidden");
+      sessionStorage.setItem("sl-loader-seen", "true");
+    }, 2800);
+
+    setTimeout(function () {
+      if (loader.parentNode) loader.parentNode.removeChild(loader);
+    }, 3500);
+  })();
+</script>

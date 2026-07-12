@@ -1,0 +1,124 @@
+{
+  "fullName": "Siratee Lertsubthaworn",
+  "initials": "SL",
+  "professionalTitle": "BAScii Student | Entrepreneurship, Technology & Innovation",
+  "elevatorPitch": "I study entrepreneurship and integrated innovation at Chulalongkorn University, exploring the intersection of business, technology, and global markets. I am interested in building ventures, applying analytical thinking, and turning ideas into practical business solutions.",
+  "shortBio": "Siratee Lertsubthaworn is an Integrated Innovation student at Chulalongkorn University focusing on technology entrepreneurship, business strategy, and applied operations engineering. He explores how interdisciplinary thinking can be leveraged to build and scale venture infrastructures.",
+  "location": "Bangkok, Thailand",
+  "locationVisible": true,
+  "email": "sirateelert@gmail.com",
+  "phone": "(+66) 99-452-8880",
+  "headshotPlaceholder": "/images/headshot-placeholder.svg",
+  "favicon": "/favicon.svg",
+  "resumeFile": "/files/Siratee_Lertsuthaworn_Resume.pdf",
+  "vCardFile": "/files/siratee-lertsubthaworn.vcf",
+  "siteTagline": "Digital headquarters of Siratee Lertsubthaworn",
+  "professionalPhilosophy": "The sky cannot be the limit when there are footsteps on the moon.",
+  "researchInterests": [
+    "Technology Entrepreneurship",
+    "Artificial Intelligence Applications",
+    "International Business Strategy",
+    "Quantitative Finance",
+    "Emerging Technologies (including Quantum Computing)"
+  ],
+  "entrepreneurshipSummary": "Focused on venture building and strategic financial operations, with a proven track record handling procurement, budgeting, and resource management across high-stakes student environments.",
+  "languages": [
+    { "name": "Thai", "level": "Native" },
+    { "name": "English", "level": "Fluent (IELTS Academic 7.5/9.0)" }
+  ],
+  "education": [
+    {
+      "institution": "Chulalongkorn University – School of Integrated Innovation",
+      "degree": "Bachelor of Arts and Science in Integrated Innovation (BAScii)",
+      "period": "Apr 2025 – Jun 2029 (Expected)"
+    },
+    {
+      "institution": "Singapore Management University",
+      "degree": "Global Summer Programme (Exchange Program)",
+      "period": "Jun 29, 2026 – Jul 24, 2026"
+    }
+  ],
+  "experience": [
+    {
+      "company": "PassionSeed Co., Ltd. (Next Decade Hackathon)",
+      "role": "Head of Finance",
+      "period": "Jan 2026 – Jun 2026",
+      "bullets": [
+        "Led financial planning, budgeting, and forecasting for a healthcare-focused hackathon in partnership with organizations including AMSA and STEM Like Her.",
+        "Drove sponsorship and fundraising strategy, engaging 100+ potential sponsors via email and calls to raise 50,000, and administered a 16,000 cash prize pool across two competition categories.",
+        "Designed and implemented expense approval workflows and internal controls, strengthening financial transparency for executive-level go/no-go decisions."
+      ]
+    },
+    {
+      "company": "BAScii Open House 2026 & InCSII Playground",
+      "role": "Procurement & Event Operations Coordinator",
+      "period": "Nov 2025 – Mar 2026",
+      "bullets": [
+        "Managed procurement and purchasing across multiple student-led events, sourcing suppliers, evaluating quotations, and negotiating pricing to ensure on-time delivery of event infrastructure.",
+        "Processed and reconciled tax invoices from vendors and audited a master inventory of 160+ reusable event assets, improving resource efficiency and compliance.",
+        "Coordinated purchasing schedules and monitored delivery timelines, conducting cost-benefit analyses to guide efficient purchasing decisions across team requirements.",
+        "Maintained procurement documentation and dynamic spending trackers in Google Sheets, providing real-time financial transparency for audits and reporting."
+      ]
+    },
+    {
+      "company": "Honda Automobile (Thailand) Co., Ltd.",
+      "role": "Service & Repair Operations Intern",
+      "period": "Dec 2023",
+      "bullets": [
+        "Facilitated data workflows and service record management using SAP ERP to enhance operational visibility.",
+        "Supported technical departments through standardized documentation in a multinational environment."
+      ]
+    },
+    {
+      "company": "Student Market (MUIDS)",
+      "role": "Finance & Inventory Coordinator",
+      "period": "May 2023 – Jul 2023",
+      "bullets": [
+        "Conducted budget allocation and cost analysis to validate product viability for a student marketplace.",
+        "Reconciled final finances and calculated net profitability to evaluate overall project success."
+      ]
+    }
+  ],
+  "teachingExperience": [
+    {
+      "role": "Teaching Assistant (Incoming) — Coding & Statistics, BAScii Program",
+      "period": "Aug 2026 – Jun 2027 (Expected)",
+      "details": "Coordinating with faculty to support instruction across a two-term curriculum, consisting of a 6-month Coding block and a 6-month Statistics block."
+    },
+    {
+      "role": "Private Tutor",
+      "period": "Active",
+      "details": "Subjects: Mathematics (Grade 7–12), English (All levels), Statistics (Grade 11–University Year 1). English qualification: IELTS Academic Overall 7.5/9.0 (Listening: 8.5, Speaking: 8.5, Reading: 6.5, Writing: 7.0)."
+    }
+  ],
+  "awards": [
+    { "title": "Smart City Engineering Design Competition", "result": "2nd Place", "year": "2024" },
+    { "title": "INTerCSII Hackathon", "result": "Top 6 Finalist", "year": "Feb 2026" },
+    { "title": "IT City x CSII Hackathon", "result": "Top 6 Finalist", "year": "Dec 2025" }
+  ],
+  "skills": {
+    "financeAndAccounting": [
+      "Budgeting & Forecasting",
+      "Financial Reporting",
+      "Cost-Benefit Analysis",
+      "ROI & Breakeven Analysis",
+      "Expense Management",
+      "Fundraising & Sponsorship"
+    ],
+    "procurementAndOperations": [
+      "Vendor Sourcing & Negotiation",
+      "RFQ/Quotation Evaluation",
+      "Purchase Order Management",
+      "Inventory Auditing",
+      "Invoice Processing & Reconciliation"
+    ],
+    "itAndDataTools": [
+      "Google Sheets (Financial Modeling)",
+      "Microsoft Excel",
+      "Microsoft Word",
+      "SAP ERP",
+      "Canva",
+      "When2Meet"
+    ]
+  }
+}

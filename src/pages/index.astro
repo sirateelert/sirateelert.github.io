@@ -1,0 +1,156 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import LoadingScreen from '../components/LoadingScreen.astro';
+import personal from '../data/personal.json';
+
+const resumePath = "/files/Siratee_Lertsuthaworn_Resume.pdf";
+
+const timelineData = [
+  {
+    role: "Teaching Assistant (Incoming)",
+    organization: "Coding & Statistics, BAScii Program",
+    duration: "Aug 2026 – Jun 2027 (Expected)",
+    summary: "Coordinating with faculty to support curriculum delivery across a consecutive two-term schedule."
+  },
+  {
+    role: "Exchange Program Participant",
+    organization: "Singapore Management University",
+    duration: "Jun 2026 – Jul 2026",
+    summary: "Focused on regional macroeconomic paradigms, asset structuring, and corporate innovation frameworks."
+  },
+  {
+    role: "Head of Finance",
+    organization: "PassionSeed Co., Ltd. (Next Decade Hackathon)",
+    duration: "Jan 2026 – Jun 2026",
+    summary: "Raised ฿50,000 in sponsorships and managed financial workflows for a ฿16,000 active cash reward pool."
+  },
+  {
+    role: "Procurement & Event Operations Coordinator",
+    organization: "BAScii Open House 2026 & InCSII Playground",
+    duration: "Nov 2025 – Mar 2026",
+    summary: "Directed high-volume procurement and audited a dynamic master tracker containing 160+ reusable inventory assets."
+  },
+  {
+    role: "Bachelor of Arts and Science in Integrated Innovation (BAScii)",
+    organization: "Chulalongkorn University",
+    duration: "Apr 2025 – Jun 2029 (Expected)",
+    summary: "Core program tracking centered on digital venture incubation and cross-border innovation paradigms."
+  },
+  {
+    role: "Service & Repair Operations Intern",
+    organization: "Honda Automobile (Thailand) Co., Ltd.",
+    duration: "May 2023 – Jul 2023",
+    summary: "Facilitated enterprise asset tracking and standardized multi-department operational documentation via SAP ERP."
+  },
+  {
+    role: "Finance & Inventory Coordinator",
+    organization: "Student Market (MUIDS)",
+    duration: "Dec 2023",
+    summary: "Conducted product viability calculations and reconciled end-of-campaign revenue ledger entries."
+  }
+];
+---
+<BaseLayout title="Portfolio">
+  <LoadingScreen />
+
+  <div class="space-y-24 py-8 animate-fade-in max-w-5xl mx-auto px-6">
+    
+    <section id="home" class="scroll-mt-24 min-h-[40vh] flex flex-col-reverse md:flex-row items-center md:items-start justify-between gap-8 pt-6">
+      <div class="flex-1 space-y-6 text-center md:text-left mt-6 md:mt-0">
+        <div class="space-y-3">
+          <span class="text-xs font-extrabold tracking-widest uppercase text-[#E17E12]">{personal.location}</span>
+          <h1 class="text-4xl sm:text-5xl font-black tracking-tight text-slate-900 dark:text-white">{personal.fullName}</h1>
+          <p class="text-lg font-semibold text-slate-600 dark:text-slate-400">{personal.professionalTitle}</p>
+        </div>
+        
+        <p class="text-sm sm:text-base leading-relaxed text-slate-700 dark:text-slate-300 max-w-xl mx-auto md:mx-0">
+          {personal.elevatorPitch}
+        </p>
+        
+        <div class="flex flex-row flex-wrap justify-center md:justify-start items-center gap-3 pt-4 whitespace-nowrap">
+          <a href="#about" class="px-4 py-2.5 bg-slate-900 text-white hover:bg-slate-800 dark:bg-white dark:text-slate-950 dark:hover:bg-slate-100 font-bold text-sm rounded-lg shadow-sm transition-all active:scale-95">About Me</a>
+          <a href={resumePath} download class="px-4 py-2.5 bg-white text-slate-900 border border-slate-200 hover:bg-slate-50 dark:bg-slate-900 dark:text-white dark:border-slate-800 dark:hover:bg-slate-800 font-bold text-sm rounded-lg shadow-sm transition-all active:scale-95">Download Resume</a>
+          <a href="#contact" class="px-4 py-2.5 bg-[#E17E12] text-white hover:bg-[#c96c0d] font-bold text-sm rounded-lg shadow-sm transition-all active:scale-95">Contact Me</a>
+        </div>
+      </div>
+
+      <div class="flex-shrink-0 w-64 h-64 sm:w-72 sm:h-72 md:w-[290px] md:h-[290px] group perspective">
+        <div class="w-full h-full p-3 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 shadow-md rounded-sm transition-transform duration-500 hover:-translate-y-1 hover:shadow-lg">
+          <img 
+            src="/images/headshot-placeholder.JPEG" 
+            alt={personal.fullName} 
+            class="w-full h-full object-cover rounded-sm shadow-inner brightness-95 contrast-105 filter group-hover:brightness-100 transition-all duration-300"
+          />
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="scroll-mt-24 space-y-10">
+      <div class="space-y-3">
+        <h2 class="text-2xl font-black text-slate-900 dark:text-white tracking-tight">Biography & Background</h2>
+        <p class="text-sm sm:text-base text-slate-700 dark:text-slate-300 leading-relaxed max-w-3xl">{personal.shortBio}</p>
+      </div>
+
+      <div class="space-y-8">
+        <div class="relative border-l-2 border-slate-200 dark:border-slate-800 ml-3 space-y-10">
+          {timelineData.map((item) => (
+            <div class="relative pl-6 group">
+              <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-white dark:bg-slate-950 border-2 border-slate-300 dark:border-slate-700 group-hover:border-[#E17E12] transition-colors"></div>
+              <div class="space-y-1.5">
+                <span class="text-[11px] font-bold text-slate-400 dark:text-slate-500 block tracking-wider uppercase">{item.duration}</span>
+                <h4 class="text-lg font-bold text-slate-900 dark:text-white group-hover:text-[#E17E12] transition-colors">{item.role}</h4>
+                <p class="text-sm font-medium text-slate-500 dark:text-slate-400">{item.organization}</p>
+                <p class="text-sm text-slate-600 dark:text-slate-400 pt-1 flex items-start gap-2">
+                  <span class="text-[#E17E12] text-base leading-none">•</span> {item.summary}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section id="resume" class="scroll-mt-24 space-y-6">
+      <div class="flex items-center justify-between">
+        <h2 class="text-2xl font-black text-slate-900 dark:text-white tracking-tight">Resume</h2>
+        <a href={resumePath} download class="text-xs font-bold text-[#E17E12] hover:underline transition-colors">Download PDF Copy</a>
+      </div>
+      <!-- Fixed Embed approach without hash params -->
+      <div class="w-full aspect-[1/1.414] bg-slate-100 dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden relative">
+        <embed src={resumePath} type="application/pdf" class="absolute inset-0 w-full h-full rounded-xl" />
+        
+        <!-- Fallback if embed fails (e.g. on mobile browsers that don't support inline PDF) -->
+        <div class="absolute inset-0 flex items-center justify-center pointer-events-none -z-10">
+           <p class="text-slate-500 text-sm">PDF preview not supported in this browser. <a href={resumePath} class="text-[#E17E12] underline pointer-events-auto">Download here</a>.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="scroll-mt-24 space-y-6 max-w-3xl pb-12">
+      <h2 class="text-2xl font-black text-slate-900 dark:text-white tracking-tight">Get In Touch</h2>
+      <div class="grid sm:grid-cols-2 gap-4">
+        <a href={`mailto:${personal.email}`} class="flex flex-col p-5 bg-white border border-slate-200 rounded-xl hover:border-[#E17E12] dark:bg-slate-900 dark:border-slate-800 dark:hover:border-[#E17E12] transition-all group shadow-sm">
+          <span class="text-[11px] font-extrabold text-slate-400 uppercase tracking-wider mb-1">Direct Mail</span>
+          <span class="text-sm font-bold text-slate-900 dark:text-white group-hover:text-[#E17E12] transition-colors truncate">{personal.email}</span>
+          <span class="text-xs text-slate-500 mt-3">Will get back to you within 1–3 business days →</span>
+        </a>
+        <div class="flex flex-col p-5 bg-white border border-slate-200 rounded-xl dark:bg-slate-900 dark:border-slate-800 shadow-sm">
+          <span class="text-[11px] font-extrabold text-slate-400 uppercase tracking-wider mb-1">Call Placement</span>
+          <span class="text-sm font-bold text-slate-900 dark:text-white">(+66) 99-452-8880</span>
+          <span class="text-xs text-slate-500 mt-3">Available during corporate hours</span>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</BaseLayout>
+
+<style is:global>
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .animate-fade-in {
+    animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+</style>

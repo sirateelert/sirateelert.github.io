@@ -1,0 +1,28 @@
+---
+import personal from '../data/personal.json';
+---
+<header class="sticky top-0 z-50 w-full backdrop-blur-md bg-white/90 dark:bg-slate-950/90 border-b border-slate-200 dark:border-slate-800 transition-all duration-300 shadow-sm">
+  <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+    
+    <!-- Left Side: Logo & Brand (Clears session memory on click to replay animation) -->
+    <a href="/" id="brand-logo" class="flex items-center gap-3 group" onclick="sessionStorage.removeItem('sl-loader-seen'); if(window.location.pathname === '/') { window.location.reload(); }">
+      <div class="w-8 h-8 rounded-lg bg-[#E17E12] flex items-center justify-center text-white font-extrabold text-sm shadow-sm transform transition-transform duration-500 group-hover:rotate-[360deg]">
+        SL
+      </div>
+      <div class="overflow-hidden">
+        <span class="block font-bold text-lg text-slate-900 dark:text-white tracking-tight transform transition-all duration-500 origin-left group-hover:scale-105 group-hover:text-[#E17E12]">
+          {personal.fullName}
+        </span>
+      </div>
+    </a>
+    
+    <!-- Right Side: Navigation -->
+    <nav class="hidden sm:flex items-center gap-8 text-sm font-semibold text-slate-700 dark:text-slate-300">
+      <a href="#home" class="hover:text-[#E17E12] transition-colors">Home</a>
+      <a href="#about" class="hover:text-[#E17E12] transition-colors">Experience</a>
+      <a href="#resume" class="hover:text-[#E17E12] transition-colors">Projects</a>
+      <a href="#contact" class="hover:text-[#E17E12] transition-colors">Contact</a>
+    </nav>
+
+  </div>
+</header>
