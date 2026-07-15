@@ -115,30 +115,110 @@ const timelineData = [
         <h2 class="text-2xl font-black text-slate-900 dark:text-white tracking-tight">Resume</h2>
         <a href={resumePath} download class="text-xs font-bold text-[#E17E12] hover:underline transition-colors">Download PDF Copy</a>
       </div>
-      <!-- Fixed Embed approach without hash params -->
       <div class="w-full aspect-[1/1.414] bg-slate-100 dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden relative">
         <embed src={resumePath} type="application/pdf" class="absolute inset-0 w-full h-full rounded-xl" />
-        
-        <!-- Fallback if embed fails (e.g. on mobile browsers that don't support inline PDF) -->
         <div class="absolute inset-0 flex items-center justify-center pointer-events-none -z-10">
-           <p class="text-slate-500 text-sm">PDF preview not supported in this browser. <a href={resumePath} class="text-[#E17E12] underline pointer-events-auto">Download here</a>.</p>
+          <p class="text-slate-500 text-sm">PDF preview not supported in this browser. <a href={resumePath} class="text-[#E17E12] underline pointer-events-auto">Download here</a>.</p>
         </div>
       </div>
     </section>
 
-    <section id="contact" class="scroll-mt-24 space-y-6 max-w-3xl pb-12">
-      <h2 class="text-2xl font-black text-slate-900 dark:text-white tracking-tight">Get In Touch</h2>
-      <div class="grid sm:grid-cols-2 gap-4">
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="scroll-mt-24 space-y-6 max-w-4xl pb-12">
+      <div class="space-y-2">
+        <h2 class="text-2xl font-black text-slate-900 dark:text-white tracking-tight">
+          Contact Me
+        </h2>
+        <p class="text-sm sm:text-base text-slate-600 dark:text-slate-400 max-w-2xl leading-relaxed">
+          Available for professional inquiries, collaborations, and networking opportunities.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+
+        <!-- Email -->
         <a href={`mailto:${personal.email}`} class="flex flex-col p-5 bg-white border border-slate-200 rounded-xl hover:border-[#E17E12] dark:bg-slate-900 dark:border-slate-800 dark:hover:border-[#E17E12] transition-all group shadow-sm">
-          <span class="text-[11px] font-extrabold text-slate-400 uppercase tracking-wider mb-1">Direct Mail</span>
-          <span class="text-sm font-bold text-slate-900 dark:text-white group-hover:text-[#E17E12] transition-colors truncate">{personal.email}</span>
-          <span class="text-xs text-slate-500 mt-3">Will get back to you within 1–3 business days →</span>
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-[11px] font-extrabold text-slate-400 uppercase tracking-wider">Email</span>
+            <svg class="w-5 h-5 text-slate-400 group-hover:text-[#E17E12] transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+              <polyline points="22,6 12,13 2,6"/>
+            </svg>
+          </div>
+          <span class="text-sm font-bold text-slate-900 dark:text-white group-hover:text-[#E17E12] transition-colors truncate">
+            {personal.email}
+          </span>
+          <span class="text-xs text-slate-500 mt-2">
+            For business inquiries, collaborations, and general correspondence.
+          </span>
         </a>
+
+        <!-- LinkedIn -->
+        <a href="https://linkedin.com/in/sirateelert" target="_blank" rel="noopener noreferrer" class="flex flex-col p-5 bg-white border border-slate-200 rounded-xl hover:border-[#E17E12] dark:bg-slate-900 dark:border-slate-800 dark:hover:border-[#E17E12] transition-all group shadow-sm">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-[11px] font-extrabold text-slate-400 uppercase tracking-wider">LinkedIn</span>
+            <svg class="w-5 h-5 text-slate-400 group-hover:text-[#E17E12] transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+              <rect x="2" y="9" width="4" height="12"/>
+              <circle cx="4" cy="4" r="2"/>
+            </svg>
+          </div>
+          <span class="text-sm font-bold text-slate-900 dark:text-white group-hover:text-[#E17E12] transition-colors">
+            sirateelert
+          </span>
+          <span class="text-xs text-slate-500 mt-2">
+            Professional background, experience, and networking.
+          </span>
+        </a>
+
+        <!-- WhatsApp -->
+        <a href="https://wa.me/66994528880" target="_blank" rel="noopener noreferrer" class="flex flex-col p-5 bg-white border border-slate-200 rounded-xl hover:border-[#E17E12] dark:bg-slate-900 dark:border-slate-800 dark:hover:border-[#E17E12] transition-all group shadow-sm">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-[11px] font-extrabold text-slate-400 uppercase tracking-wider">WhatsApp</span>
+            <svg class="w-5 h-5 text-slate-400 group-hover:text-[#E17E12] transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+            </svg>
+          </div>
+          <span class="text-sm font-bold text-slate-900 dark:text-white group-hover:text-[#E17E12] transition-colors">
+            (+66) 99-452-8880
+          </span>
+          <span class="text-xs text-slate-500 mt-2">
+            Available for business communication during business hours.
+          </span>
+        </a>
+
+        <!-- LINE -->
+        <a href="https://line.me/ti/p/~siratee.l" target="_blank" rel="noopener noreferrer" class="flex flex-col p-5 bg-white border border-slate-200 rounded-xl hover:border-[#E17E12] dark:bg-slate-900 dark:border-slate-800 dark:hover:border-[#E17E12] transition-all group shadow-sm">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-[11px] font-extrabold text-slate-400 uppercase tracking-wider">LINE Messenger</span>
+            <svg class="w-5 h-5 text-slate-400 group-hover:text-[#E17E12] transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 11.5C21 7.36 16.97 4 12 4S3 7.36 3 11.5c0 2.22 1.15 4.22 3 5.58V20l3.18-1.92c.6.14 1.22.22 1.82.22 4.97 0 9-3.36 9-7.5z"/>
+            </svg>
+          </div>
+          <span class="text-sm font-bold text-slate-900 dark:text-white group-hover:text-[#E17E12] transition-colors">
+            siratee.l
+          </span>
+          <span class="text-xs text-slate-500 mt-2">
+            For quick communication and project-related discussions.
+          </span>
+        </a>
+
+        <!-- Phone -->
         <div class="flex flex-col p-5 bg-white border border-slate-200 rounded-xl dark:bg-slate-900 dark:border-slate-800 shadow-sm">
-          <span class="text-[11px] font-extrabold text-slate-400 uppercase tracking-wider mb-1">Call Placement</span>
-          <span class="text-sm font-bold text-slate-900 dark:text-white">(+66) 99-452-8880</span>
-          <span class="text-xs text-slate-500 mt-3">Available during corporate hours</span>
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-[11px] font-extrabold text-slate-400 uppercase tracking-wider">Phone</span>
+            <svg class="w-5 h-5 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+            </svg>
+          </div>
+          <span class="text-sm font-bold text-slate-900 dark:text-white">
+            (+66) 99-452-8880
+          </span>
+          <span class="text-xs text-slate-500 mt-2">
+            Available for professional inquiries during business hours.
+          </span>
         </div>
+
       </div>
     </section>
 
