@@ -1,6 +1,4 @@
 ---
-import { ViewTransitions } from "astro:transitions";
-
 interface Props {
   title?: string;
 }
@@ -14,11 +12,19 @@ const { title = "Siratee Portfolio" } = Astro.props;
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
 
+    <!-- 1. ULTRA-EARLY SCROLL BLOCKER (Executes before page renders) -->
+    <script is:inline>
+      if ('scrollRestoration' in history) {
+        history.scrollRestoration = 'manual';
+      }
+      if (window.location.hash) {
+        history.replaceState(null, null, ' ');
+      }
+      window.scrollTo(0, 0);
+    </script>
+
     <!-- Your Umami Tracking Script -->
     <script defer src="https://cloud.umami.is/script.js" data-website-id="YOUR-UNIQUE-ID"></script>
-
-    <!-- The View Transitions Component -->
-    <ViewTransitions />
   </head>
   <body class="bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300">
     <!-- Dark Mode Toggle Button Component -->
@@ -28,7 +34,9 @@ const { title = "Siratee Portfolio" } = Astro.props;
 
     <slot />
 
+    <!-- 2. DARK MODE & MANUAL INTERCEPT SCROLL MANAGEMENT -->
     <script>
+      // ---- Theme Management ----
       const applyTheme = () => {
         const theme = localStorage.getItem("theme");
         if (theme === "dark" || (!theme && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
@@ -45,12 +53,67 @@ const { title = "Siratee Portfolio" } = Astro.props;
         localStorage.setItem("theme", isDark ? "dark" : "light");
       };
 
-      // Initialize on load and after every page transition
       applyTheme();
-      document.addEventListener("astro:page-load", () => {
-        applyTheme();
-        document.getElementById("themeToggle")?.removeEventListener("click", handleToggle);
-        document.getElementById("themeToggle")?.addEventListener("click", handleToggle);
+      
+      const toggleBtn = document.getElementById("themeToggle");
+      if (toggleBtn) {
+        toggleBtn.addEventListener("click", handleToggle);
+      }
+
+      // ---- Force Smooth Manual Scrolling Function ----
+      function smoothScrollTo(targetY, duration = 800) {
+        const startY = window.scrollY;
+        const distance = targetY - startY;
+        const startTime = performance.now();
+
+        function animation(currentTime) {
+          const elapsed = currentTime - startTime;
+          const progress = Math.min(elapsed / duration, 1);
+
+          // Easing function (cubic easeInOut)
+          const ease = progress < 0.5
+            ? 4 * progress * progress * progress
+            : 1 - Math.pow(-2 * progress + 2, 3) / 2;
+
+          window.scrollTo(0, startY + distance * ease);
+
+          if (progress < 1) {
+            requestAnimationFrame(animation);
+          }
+        }
+
+        requestAnimationFrame(animation);
+      }
+
+      // Intercept anchor link clicks manually
+      const initScrollIntercept = () => {
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+          anchor.addEventListener("click", (e) => {
+            const hash = anchor.getAttribute("href");
+            if (!hash || hash === "#") return;
+            
+            const target = document.querySelector(hash);
+            if (!target) return;
+
+            e.preventDefault();
+            
+            // Adjust offset (-80px) to prevent sticky nav bars from blocking content headers
+            const targetPosition = target.getBoundingClientRect().top + window.scrollY - 80;
+            smoothScrollTo(targetPosition, 900);
+          });
+        });
+      };
+
+      // Initialize on DOM load
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", initScrollIntercept);
+      } else {
+        initScrollIntercept();
+      }
+
+      // Final backup to guarantee refresh remains centered at top
+      window.addEventListener("load", () => {
+        window.scrollTo(0, 0);
       });
     </script>
   </body>
