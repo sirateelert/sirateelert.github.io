@@ -40,7 +40,6 @@ const disclaimer =
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
 
-    <!-- Apply stored theme before first paint to avoid a flash -->
     <script is:inline>
       (function () {
         try {
@@ -69,37 +68,6 @@ const disclaimer =
     >
       Skip to main content
     </a>
-
-    <!-- SL Loader Animation -->
-    <div id="sl-loader" class="fixed inset-0 z-50 flex items-center justify-center bg-csii-paper transition-opacity duration-700 dark:bg-csii-black">
-      <div class="flex overflow-hidden font-serif text-4xl font-medium tracking-tight text-csii-black dark:text-csii-paper">
-        <span>S</span>
-        <span id="sl-iratee" class="max-w-0 opacity-0 transition-all duration-[1200ms] ease-in-out">iratee&nbsp;</span>
-        <span>L</span>
-        <span id="sl-ert" class="max-w-0 opacity-0 transition-all duration-[1200ms] ease-in-out">ertsubthaworn</span>
-      </div>
-    </div>
-    <script>
-      window.addEventListener('DOMContentLoaded', () => {
-        const loader = document.getElementById('sl-loader');
-        const iratee = document.getElementById('sl-iratee');
-        const ert = document.getElementById('sl-ert');
-        
-        if (loader && iratee && ert) {
-          setTimeout(() => {
-            iratee.classList.remove('max-w-0', 'opacity-0');
-            iratee.classList.add('max-w-[200px]', 'opacity-100');
-            ert.classList.remove('max-w-0', 'opacity-0');
-            ert.classList.add('max-w-[200px]', 'opacity-100');
-          }, 300);
-
-          setTimeout(() => {
-            loader.classList.add('opacity-0');
-            setTimeout(() => loader.remove(), 700);
-          }, 2000);
-        }
-      });
-    </script>
 
     <slot />
 

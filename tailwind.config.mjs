@@ -9,9 +9,25 @@ export default {
         sans: ['Geist', 'Inter', 'system-ui', 'sans-serif'],
       },
       colors: {
-        neutral: {
-          50: '#FAF9F6',
-          900: '#121212',
+        csii: {
+          gold: '#AA8313',
+          brown: '#8C610C',
+          ochre: '#5D4008',
+          black: '#111111',
+          paper: '#EDEFEC',
+        },
+        struct: {
+          yellow: '#E6FF50',
+          sage: '#F5FFB9',
+          sand: '#D3D3AA',
+        },
+        accent: {
+          eco: '#034F3D',
+          mint: '#19BF93',
+          mintbright: '#46FFDB',
+          marine: '#0866BF',
+          blue: '#3BA0FF',
+          bluebright: '#8AF7FF',
         },
       },
     },

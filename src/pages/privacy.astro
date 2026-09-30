@@ -2,16 +2,125 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import personal from '../data/personal.json';
+
+const link =
+  'text-csii-ochre underline decoration-csii-gold underline-offset-4 hover:text-csii-brown dark:text-csii-gold dark:hover:text-struct-sand';
+const h2Class = 'mt-10 font-serif text-xl font-medium tracking-tight';
+const pClass = 'mt-3 text-sm leading-relaxed';
+const ulClass = 'mt-3 list-disc space-y-2 pl-5 text-sm leading-relaxed';
 ---
 
-<BaseLayout title="Privacy Policy - Siratee Lertsubthaworn">
+<BaseLayout
+  title="Privacy Policy | Siratee Lertsubthaworn"
+  description="Privacy Policy for sirateelert.github.io: what information is processed, why, and the rights available under Thai data protection law."
+>
   <Header />
-  <main class="max-w-3xl mx-auto px-6 py-16">
-    <h1 class="font-serif text-3xl font-medium mb-6 text-neutral-900 dark:text-neutral-100">Privacy Policy</h1>
-    <div class="prose dark:prose-invert text-neutral-600 dark:text-neutral-400 space-y-4">
-      <p>This website does not collect personal data or store cookies directly.</p>
-      <p>Any interaction via external links or services is governed by their respective privacy policies.</p>
-    </div>
+
+  <main id="main" class="mx-auto max-w-3xl px-6 py-14">
+    <p class="mb-1 text-xs font-medium uppercase tracking-wider text-csii-ochre dark:text-csii-gold">Legal</p>
+    <h1 class="font-serif text-4xl font-medium tracking-tight">Privacy Policy</h1>
+    <p class="mt-3 text-sm text-neutral-600 dark:text-neutral-400">Last updated: 30 September 2026</p>
+
+    <article aria-label="Privacy Policy">
+      <h2 class={h2Class}>1. Scope and Controller</h2>
+      <p class={pClass}>
+        This policy applies to sirateelert.github.io (the &ldquo;Site&rdquo;), operated by {personal.fullName}
+        ({personal.location}), who acts as the data controller for personal data processed through the Site.
+        The Site is a personal academic and professional portfolio.
+      </p>
+
+      <h2 class={h2Class}>2. Information Processed</h2>
+      <ul class={ulClass}>
+        <li>
+          <strong>Information you send directly.</strong> If you contact the author by email or telephone, the
+          information you provide (such as your name, contact details and message content) is processed in order
+          to respond.
+        </li>
+        <li>
+          <strong>Hosting and technical data.</strong> The Site is served from GitHub Pages. Like most web hosts,
+          the hosting provider may process technical data such as IP addresses and browser information in server
+          logs. Please see GitHub&rsquo;s own privacy statement for details.
+        </li>
+        <li>
+          <strong>Analytics.</strong> Where enabled, the Site uses Umami Cloud to collect aggregate,
+          privacy-oriented usage statistics (for example, pages viewed and referrer). Umami is designed not to
+          use cookies or to track individuals across websites.
+        </li>
+        <li>
+          <strong>Web fonts.</strong> The Site loads typefaces from Google Fonts. When a page loads, your browser
+          sends a request, including your IP address, to Google&rsquo;s servers.
+        </li>
+        <li>
+          <strong>Theme preference.</strong> Your light or dark mode choice is stored in your browser&rsquo;s local
+          storage. It stays on your device and is not transmitted to the author.
+        </li>
+      </ul>
+
+      <h2 class={h2Class}>3. Purposes and Legal Bases</h2>
+      <p class={pClass}>
+        Personal data is processed to respond to enquiries, to operate and secure the Site, and to understand
+        aggregate usage so that content can be improved. Under Thailand&rsquo;s Personal Data Protection Act B.E.
+        2562 (2019) (&ldquo;PDPA&rdquo;), the bases relied upon are your consent (where you initiate contact) and
+        the legitimate interests of the author in operating a secure and useful Site, balanced against your rights.
+      </p>
+
+      <h2 class={h2Class}>4. Automated Tools and Generative AI</h2>
+      <p class={pClass}>
+        Personal data or non-public information that you send to the author is not submitted to automated
+        third-party large language model services unless strict compliance measures are in place, including
+        appropriate authorisation and compliance with applicable data protection law. See the
+        <a href="/#governance" class={link}>Generative AI &amp; Tooling Governance</a> statement.
+      </p>
+
+      <h2 class={h2Class}>5. Retention</h2>
+      <p class={pClass}>
+        Correspondence is retained only as long as necessary to handle your enquiry and any reasonable follow-up,
+        and is then deleted or anonymised. Analytics and hosting logs are retained according to the policies of
+        the respective providers.
+      </p>
+
+      <h2 class={h2Class}>6. Disclosure and International Transfers</h2>
+      <p class={pClass}>
+        Personal data is not sold. It may be processed by service providers acting for the Site (hosting,
+        analytics and font delivery), some of which operate outside Thailand. Where this occurs, processing is
+        subject to those providers&rsquo; own safeguards and terms.
+      </p>
+
+      <h2 class={h2Class}>7. Your Rights</h2>
+      <p class={pClass}>Subject to the conditions and exceptions of the PDPA, you may have the right to:</p>
+      <ul class={ulClass}>
+        <li>access and obtain a copy of your personal data;</li>
+        <li>request rectification of inaccurate or incomplete data;</li>
+        <li>request erasure or restriction of processing;</li>
+        <li>object to processing and request data portability;</li>
+        <li>withdraw consent at any time, without affecting processing already carried out; and</li>
+        <li>lodge a complaint with the Personal Data Protection Committee of Thailand.</li>
+      </ul>
+
+      <h2 class={h2Class}>8. Security</h2>
+      <p class={pClass}>
+        Reasonable technical and organisational measures are used to protect personal data. No method of
+        transmission or storage is completely secure, and absolute security cannot be guaranteed.
+      </p>
+
+      <h2 class={h2Class}>9. Changes to This Policy</h2>
+      <p class={pClass}>
+        This policy may be updated from time to time. The date of the latest revision appears at the top of this
+        page.
+      </p>
+
+      <h2 class={h2Class}>10. Contact</h2>
+      <p class={pClass}>
+        For privacy enquiries or to exercise your rights, contact
+        <a href={`mailto:${personal.email}`} class={link}>{personal.email}</a>.
+      </p>
+    </article>
+
+    <p class="mt-12 text-sm">
+      <a href="/" class={link}>&larr; Return to home page</a>
+    </p>
   </main>
+
   <Footer />
 </BaseLayout>

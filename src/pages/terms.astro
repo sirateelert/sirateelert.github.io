@@ -2,16 +2,118 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import personal from '../data/personal.json';
+
+const link =
+  'text-csii-ochre underline decoration-csii-gold underline-offset-4 hover:text-csii-brown dark:text-csii-gold dark:hover:text-struct-sand';
+const h2Class = 'mt-10 font-serif text-xl font-medium tracking-tight';
+const pClass = 'mt-3 text-sm leading-relaxed';
+const ulClass = 'mt-3 list-disc space-y-2 pl-5 text-sm leading-relaxed';
 ---
 
-<BaseLayout title="Terms & Conditions - Siratee Lertsubthaworn">
+<BaseLayout
+  title="Terms & Conditions | Siratee Lertsubthaworn"
+  description="Terms & Conditions governing use of sirateelert.github.io, including disclaimers on informational content and AI-assisted material."
+>
   <Header />
-  <main class="max-w-3xl mx-auto px-6 py-16">
-    <h1 class="font-serif text-3xl font-medium mb-6 text-neutral-900 dark:text-neutral-100">Terms & Conditions</h1>
-    <div class="prose dark:prose-invert text-neutral-600 dark:text-neutral-400 space-y-4">
-      <p>All content published on this domain is owned by Siratee Lertsubthaworn unless otherwise stated.</p>
-      <p>Unauthorized redistribution or reproduction of content without written permission is prohibited.</p>
-    </div>
+
+  <main id="main" class="mx-auto max-w-3xl px-6 py-14">
+    <p class="mb-1 text-xs font-medium uppercase tracking-wider text-csii-ochre dark:text-csii-gold">Legal</p>
+    <h1 class="font-serif text-4xl font-medium tracking-tight">Terms &amp; Conditions</h1>
+    <p class="mt-3 text-sm text-neutral-600 dark:text-neutral-400">Last updated: 30 September 2026</p>
+
+    <article aria-label="Terms and Conditions">
+      <h2 class={h2Class}>1. Acceptance of Terms</h2>
+      <p class={pClass}>
+        By accessing or using sirateelert.github.io (the &ldquo;Site&rdquo;), you agree to these Terms &amp;
+        Conditions. If you do not agree, please do not use the Site.
+      </p>
+
+      <h2 class={h2Class}>2. Purpose and Nature of Content</h2>
+      <p class={pClass}>
+        The Site is a personal academic and professional portfolio of {personal.fullName}. Content is provided
+        for general informational purposes only and may be updated, corrected or removed at any time without
+        notice.
+      </p>
+
+      <h2 class={h2Class}>3. No Professional or Legal Advice</h2>
+      <p class={pClass}>
+        Nothing on the Site constitutes professional, financial, engineering or legal advice, and no
+        professional, advisory or client relationship is created by your use of the Site or by contacting the
+        author. You should obtain advice from a suitably qualified professional before acting on any material
+        found here.
+      </p>
+
+      <h2 class={h2Class}>4. Generative AI and Experimental Material</h2>
+      <p class={pClass}>
+        Certain projects, prototypes, code or drafts may have been produced with the assistance of generative AI
+        tools. Such material is experimental, generated rapidly, and requires rigorous human verification before
+        any production or operational use. It is subject in full to the
+        <a href="/#governance" class={link}>Generative AI &amp; Tooling Governance</a> statement, which forms part
+        of these Terms.
+      </p>
+
+      <h2 class={h2Class}>5. Intellectual Property</h2>
+      <p class={pClass}>
+        Unless otherwise stated, the text, design and original materials on the Site are &copy;
+        {new Date().getFullYear()} {personal.fullName}, all rights reserved. Names, marks and logos of third
+        parties, including universities, organisations and employers, belong to their respective owners and are
+        used for identification only, without implying endorsement.
+      </p>
+
+      <h2 class={h2Class}>6. Acceptable Use</h2>
+      <p class={pClass}>You agree not to:</p>
+      <ul class={ulClass}>
+        <li>interfere with, disrupt or attempt unauthorised access to the Site or its hosting infrastructure;</li>
+        <li>scrape or reproduce substantial portions of the Site for commercial purposes without permission; or</li>
+        <li>use the Site for any unlawful purpose or in a way that infringes the rights of others.</li>
+      </ul>
+
+      <h2 class={h2Class}>7. External Links</h2>
+      <p class={pClass}>
+        The Site may link to third-party websites. The author does not control and is not responsible for the
+        content, availability or privacy practices of those sites.
+      </p>
+
+      <h2 class={h2Class}>8. Disclaimer of Warranties</h2>
+      <p class={pClass}>
+        To the extent permitted by applicable law, the Site and its content are provided &ldquo;as is&rdquo; and
+        &ldquo;as available&rdquo;, without warranties of any kind, express or implied, including accuracy,
+        completeness, fitness for a particular purpose and non-infringement.
+      </p>
+
+      <h2 class={h2Class}>9. Limitation of Liability</h2>
+      <p class={pClass}>
+        To the extent permitted by applicable law, the author shall not be liable for any direct, indirect,
+        incidental or consequential loss arising from your use of, or reliance on, the Site or any content on it,
+        including AI-assisted material. Nothing in these Terms excludes liability that cannot be excluded under
+        applicable law.
+      </p>
+
+      <h2 class={h2Class}>10. Governing Law</h2>
+      <p class={pClass}>
+        These Terms are governed by the laws of the Kingdom of Thailand, and any dispute shall be subject to the
+        jurisdiction of the competent courts of Thailand.
+      </p>
+
+      <h2 class={h2Class}>11. Changes to These Terms</h2>
+      <p class={pClass}>
+        These Terms may be revised from time to time. Continued use of the Site after a revision constitutes
+        acceptance of the updated Terms. The date of the latest revision appears at the top of this page.
+      </p>
+
+      <h2 class={h2Class}>12. Contact</h2>
+      <p class={pClass}>
+        Questions about these Terms may be sent to
+        <a href={`mailto:${personal.email}`} class={link}>{personal.email}</a>. See also the
+        <a href="/privacy" class={link}>Privacy Policy</a>.
+      </p>
+    </article>
+
+    <p class="mt-12 text-sm">
+      <a href="/" class={link}>&larr; Return to home page</a>
+    </p>
   </main>
+
   <Footer />
 </BaseLayout>
