@@ -1,0 +1,119 @@
+---
+interface Item { title: string; body: string }
+interface Props { items: Item[]; name: string; variant?: 'light' | 'dark'; single?: boolean }
+const { items, name, variant = 'light', single = true } = Astro.props;
+---
+
+<div class={`accordion ${variant}`} data-single={single}>
+  {items.map((item, i) => (
+    <div class="acc-item">
+      <h3>
+        <button
+          class="acc-trigger"
+          type="button"
+          id={`${name}-btn-${i}`}
+          aria-expanded="false"
+          aria-controls={`${name}-panel-${i}`}
+        >
+          <span>{item.title}</span>
+          <span class="acc-icon" aria-hidden="true"></span>
+        </button>
+      </h3>
+      <div
+        class="acc-panel"
+        id={`${name}-panel-${i}`}
+        role="region"
+        aria-labelledby={`${name}-btn-${i}`}
+      >
+        <div class="acc-inner">
+          <div class="acc-body" set:html={item.body} />
+        </div>
+      </div>
+    </div>
+  ))}
+</div>
+
+<script>
+  document.querySelectorAll<HTMLElement>('.accordion').forEach((acc) => {
+    const single = acc.dataset.single === 'true';
+    acc.querySelectorAll<HTMLButtonElement>('.acc-trigger').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.acc-item')!;
+        const willOpen = btn.getAttribute('aria-expanded') !== 'true';
+
+        if (single && willOpen) {
+          acc.querySelectorAll('.acc-item.is-open').forEach((other) => {
+            other.classList.remove('is-open');
+            other.querySelector('.acc-trigger')!.setAttribute('aria-expanded', 'false');
+          });
+        }
+        item.classList.toggle('is-open', willOpen);
+        btn.setAttribute('aria-expanded', String(willOpen));
+      });
+    });
+  });
+</script>
+
+<style>
+  .accordion {
+    --line: var(--border);
+    --fg: var(--black);
+    --accent: var(--gold-dark);
+    border-top: 1px solid var(--line);
+  }
+  .accordion.dark {
+    --line: rgba(237, 239, 236, 0.22);
+    --fg: var(--off-white);
+    --accent: var(--gold-light);
+  }
+  .acc-item { border-bottom: 1px solid var(--line); }
+  h3 { margin: 0; font: inherit; }
+
+  .acc-trigger {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    padding: 18px 0;
+    background: none;
+    border: 0;
+    color: var(--fg);
+    font: 500 1rem/1.3 var(--sans);
+    text-align: left;
+    cursor: pointer;
+    transition: color 0.2s;
+  }
+  .acc-trigger:hover { color: var(--accent); }
+  .acc-trigger:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+
+  .acc-icon { position: relative; width: 14px; height: 14px; flex: none; }
+  .acc-icon::before, .acc-icon::after {
+    content: ""; position: absolute; background: currentColor;
+    top: 50%; left: 0; width: 100%; height: 1.5px;
+    transition: transform 0.3s ease;
+  }
+  .acc-icon::after { transform: rotate(90deg); }
+  .is-open .acc-icon::after { transform: rotate(0deg); }
+
+  .acc-panel {
+    display: grid;
+    grid-template-rows: 0fr;
+    visibility: hidden;
+    transition: grid-template-rows 0.35s ease, visibility 0.35s;
+  }
+  .is-open .acc-panel { grid-template-rows: 1fr; visibility: visible; }
+  .acc-inner { overflow: hidden; }
+  .acc-body {
+    padding: 0 0 20px;
+    max-width: 62ch;
+    color: var(--fg);
+    opacity: 0.85;
+    line-height: 1.65;
+  }
+  .acc-body :global(a) { color: var(--accent); text-decoration: underline; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .acc-panel, .acc-icon::before, .acc-icon::after { transition: none; }
+  }
+</style>
