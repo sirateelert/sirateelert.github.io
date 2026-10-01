@@ -1,23 +1,8 @@
 ---
-import { ViewTransitions } from "astro:transitions";
-
 interface Props {
   title?: string;
-  description?: string;
 }
-
-const {
-  title = 'Siratee Lertsubthaworn',
-  description = 'Siratee Lertsubthaworn runs finance and procurement for student-run events and hackathons at Chulalongkorn University, School of Integrated Innovation (BAScii).',
-} = Astro.props;
-
-const canonical = new URL(Astro.url.pathname, Astro.site).href;
-const umamiId = import.meta.env.PUBLIC_UMAMI_WEBSITE_ID;
-
-const aiDisclosure =
-  'Generative AI tools may be used in coding, drafting and prototyping. AI-assisted outputs are experimental and require human verification; they are not professional or legal advice and carry no warranty. No confidential or non-public data is processed by third-party LLMs without strict compliance measures. See /#governance.';
-const disclaimer =
-  'Content is provided for informational purposes only and does not constitute professional or legal advice. See /terms and /#governance.';
+const { title = "Siratee Portfolio" } = Astro.props;
 ---
 
 <!DOCTYPE html>
@@ -26,132 +11,21 @@ const disclaimer =
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
-    <meta name="description" content={description} />
-    <meta name="author" content="Siratee Lertsubthaworn" />
-    <meta name="robots" content="index, follow" />
-    <meta name="color-scheme" content="light dark" />
-    <meta name="ai-disclosure" content={aiDisclosure} />
-    <meta name="disclaimer" content={disclaimer} />
-    <link rel="canonical" href={canonical} />
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <link rel="privacy-policy" href="/privacy" />
-    <link rel="terms-of-service" href="/terms" />
 
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
-    <meta property="og:url" content={canonical} />
-
-<<<<<<< HEAD
-    <script is:inline>
-      (function () {
-        try {
-          var stored = localStorage.getItem('theme');
-          var dark =
-            stored === 'dark' ||
-            (!stored && window.matchMedia('(prefers-color-scheme: dark)').matches);
-          document.documentElement.classList.toggle('dark', dark);
-        } catch (e) {}
-      })();
-    </script>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap"
-    />
-
-    {umamiId && <script defer src="https://cloud.umami.is/script.js" data-website-id={umamiId}></script>}
-=======
     <!-- Your Umami Tracking Script -->
     <script defer src="https://cloud.umami.is/script.js" data-website-id="YOUR-UNIQUE-ID"></script>
-
-    <!-- The View Transitions Component -->
-    <ViewTransitions />
->>>>>>> parent of 9c6fb79 (feat: enforce reset to page top on initial load and refresh)
   </head>
-  <body class="bg-csii-paper font-sans text-csii-ochre antialiased dark:bg-csii-ochre dark:text-csii-paper">
-    <a
-      href="#main"
-      class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:bg-struct-yellow focus:px-3 focus:py-2 focus:font-mono focus:text-xs focus:uppercase focus:tracking-widest focus:text-csii-ochre"
-    >
-      Skip to main content
-    </a>
+  <body class="bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300">
+    <!-- Dark Mode Toggle Button Component -->
+    <button id="themeToggle" class="fixed bottom-6 right-6 p-3 bg-gray-200 dark:bg-gray-800 text-gray-800 dark:text-white rounded-full shadow-lg z-50 hover:scale-110 transition-transform duration-200" aria-label="Toggle Dark Mode">
+      🌓
+    </button>
 
     <slot />
 
+    <!-- DARK MODE & MANUAL INTERCEPT SCROLL MANAGEMENT -->
     <script>
-<<<<<<< HEAD
-      const root = document.documentElement;
-      const button = document.getElementById('themeToggle');
-
-      const sync = () => {
-        if (!button) return;
-        const isDark = root.classList.contains('dark');
-        button.setAttribute('aria-pressed', String(isDark));
-        button.textContent = isDark ? 'Light' : 'Dark';
-      };
-
-      if (button) {
-        button.addEventListener('click', () => {
-          const isDark = root.classList.toggle('dark');
-          try {
-            localStorage.setItem('theme', isDark ? 'dark' : 'light');
-          } catch (e) {}
-          sync();
-        });
-      }
-
-      sync();
-    </script>
-  </body>
-</html>
-
-<style is:global>
-  html {
-    scroll-behavior: smooth;
-  }
-  body {
-    text-rendering: optimizeLegibility;
-  }
-  ::selection {
-    background: #e6ff50;
-    color: #5d4008;
-  }
-  a:focus-visible,
-  button:focus-visible {
-    outline: 2px solid currentColor;
-    outline-offset: 3px;
-  }
-
-  /* Ruled ledger paper: thin horizontal lines, colour follows the surface */
-  .ruled {
-    --rule: rgba(237, 239, 236, 0.14);
-    background-image: repeating-linear-gradient(
-      to bottom,
-      transparent 0,
-      transparent calc(2rem - 1px),
-      var(--rule) calc(2rem - 1px),
-      var(--rule) 2rem
-    );
-  }
-  .dark .ruled {
-    --rule: rgba(93, 64, 8, 0.14);
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    html {
-      scroll-behavior: auto;
-    }
-    *,
-    *::before,
-    *::after {
-      transition-duration: 0.01ms !important;
-    }
-  }
-</style>
-=======
+      // ---- Theme Management ----
       const applyTheme = () => {
         const theme = localStorage.getItem("theme");
         if (theme === "dark" || (!theme && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
@@ -168,14 +42,60 @@ const disclaimer =
         localStorage.setItem("theme", isDark ? "dark" : "light");
       };
 
-      // Initialize on load and after every page transition
       applyTheme();
-      document.addEventListener("astro:page-load", () => {
-        applyTheme();
-        document.getElementById("themeToggle")?.removeEventListener("click", handleToggle);
-        document.getElementById("themeToggle")?.addEventListener("click", handleToggle);
-      });
+      
+      const toggleBtn = document.getElementById("themeToggle");
+      if (toggleBtn) {
+        toggleBtn.addEventListener("click", handleToggle);
+      }
+
+      // ---- Force Smooth Manual Scrolling Function ----
+      function smoothScrollTo(targetY, duration = 800) {
+        const startY = window.scrollY;
+        const distance = targetY - startY;
+        const startTime = performance.now();
+
+        function animation(currentTime) {
+          const elapsed = currentTime - startTime;
+          const progress = Math.min(elapsed / duration, 1);
+
+          const ease = progress < 0.5
+            ? 4 * progress * progress * progress
+            : 1 - Math.pow(-2 * progress + 2, 3) / 2;
+
+          window.scrollTo(0, startY + distance * ease);
+
+          if (progress < 1) {
+            requestAnimationFrame(animation);
+          }
+        }
+
+        requestAnimationFrame(animation);
+      }
+
+      // Intercept anchor link clicks manually
+      const initScrollIntercept = () => {
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+          anchor.addEventListener("click", (e) => {
+            const hash = anchor.getAttribute("href");
+            if (!hash || hash === "#") return;
+            
+            const target = document.querySelector(hash);
+            if (!target) return;
+
+            e.preventDefault();
+            
+            const targetPosition = target.getBoundingClientRect().top + window.scrollY - 80;
+            smoothScrollTo(targetPosition, 900);
+          });
+        });
+      };
+
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", initScrollIntercept);
+      } else {
+        initScrollIntercept();
+      }
     </script>
   </body>
 </html>
->>>>>>> parent of 9c6fb79 (feat: enforce reset to page top on initial load and refresh)
