@@ -8,7 +8,7 @@ interface Props {
 
 const {
   title = 'Siratee Lertsubthaworn',
-  description = 'Academic and professional profile of Siratee Lertsubthaworn, Integrated Innovation student at Chulalongkorn University.',
+  description = 'Siratee Lertsubthaworn runs finance and procurement for student-run events and hackathons at Chulalongkorn University, School of Integrated Innovation (BAScii).',
 } = Astro.props;
 
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
@@ -59,7 +59,7 @@ const disclaimer =
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap"
     />
 
     {umamiId && <script defer src="https://cloud.umami.is/script.js" data-website-id={umamiId}></script>}
@@ -71,10 +71,10 @@ const disclaimer =
     <ViewTransitions />
 >>>>>>> parent of 9c6fb79 (feat: enforce reset to page top on initial load and refresh)
   </head>
-  <body class="bg-csii-paper font-sans text-csii-black antialiased dark:bg-csii-black dark:text-csii-paper">
+  <body class="bg-csii-paper font-sans text-csii-ochre antialiased dark:bg-csii-ochre dark:text-csii-paper">
     <a
       href="#main"
-      class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:bg-csii-black focus:px-3 focus:py-2 focus:text-sm focus:text-csii-paper"
+      class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:bg-struct-yellow focus:px-3 focus:py-2 focus:font-mono focus:text-xs focus:uppercase focus:tracking-widest focus:text-csii-ochre"
     >
       Skip to main content
     </a>
@@ -90,7 +90,7 @@ const disclaimer =
         if (!button) return;
         const isDark = root.classList.contains('dark');
         button.setAttribute('aria-pressed', String(isDark));
-        button.textContent = isDark ? 'Light mode' : 'Dark mode';
+        button.textContent = isDark ? 'Light' : 'Dark';
       };
 
       if (button) {
@@ -112,23 +112,43 @@ const disclaimer =
   html {
     scroll-behavior: smooth;
   }
+  body {
+    text-rendering: optimizeLegibility;
+  }
+  ::selection {
+    background: #e6ff50;
+    color: #5d4008;
+  }
+  a:focus-visible,
+  button:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 3px;
+  }
+
+  /* Ruled ledger paper: thin horizontal lines, colour follows the surface */
+  .ruled {
+    --rule: rgba(237, 239, 236, 0.14);
+    background-image: repeating-linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent calc(2rem - 1px),
+      var(--rule) calc(2rem - 1px),
+      var(--rule) 2rem
+    );
+  }
+  .dark .ruled {
+    --rule: rgba(93, 64, 8, 0.14);
+  }
+
   @media (prefers-reduced-motion: reduce) {
     html {
       scroll-behavior: auto;
     }
-  }
-  ::selection {
-    background: #e6ff50;
-    color: #111111;
-  }
-  a:focus-visible,
-  button:focus-visible {
-    outline: 2px solid #0866bf;
-    outline-offset: 3px;
-  }
-  .dark a:focus-visible,
-  .dark button:focus-visible {
-    outline-color: #3ba0ff;
+    *,
+    *::before,
+    *::after {
+      transition-duration: 0.01ms !important;
+    }
   }
 </style>
 =======
